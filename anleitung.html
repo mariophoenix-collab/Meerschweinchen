@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Einrichtung Meine Meerschweinchen</title>
+<link rel="icon" type="image/png" href="icons/favicon-32.png">
+<style>
+:root { --bg: #f3f5ef; --card: #fff; --ink: #1d261f; --muted: #5d695f; --line: #dfe5da; --moss: #2e6a4c; --hay: #9a6a12; --warnbg: #fbf3df; --code: #eef2ea; }
+@media (prefers-color-scheme: dark) { :root { --bg: #121814; --card: #1a221c; --ink: #e7ece4; --muted: #a2ada3; --line: #2c372f; --moss: #7fc39d; --hay: #e2b55a; --warnbg: #2a2414; --code: #233026; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; -webkit-text-size-adjust: 100%; }
+main { max-width: 820px; margin: 0 auto; padding: max(20px, env(safe-area-inset-top)) 16px 60px; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 8px 0 6px; }
+h2 { font-size: 1.3rem; margin: 0 0 10px; display: flex; gap: 10px; align-items: baseline; }
+h2 .n { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--moss); color: var(--bg); display: inline-grid; place-items: center; font-size: 1rem; transform: translateY(-2px); }
+h3 { font-size: 1.05rem; margin: 18px 0 6px; }
+section { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; margin: 18px 0; }
+ol, ul { padding-left: 24px; margin: 8px 0; } li { margin: 6px 0; }
+code { background: var(--code); padding: 2px 7px; border-radius: 6px; font-size: .92em; overflow-wrap: anywhere; }
+.note { background: var(--warnbg); border-radius: 12px; padding: 12px 14px; margin: 12px 0; }
+.muted { color: var(--muted); font-size: .94rem; }
+a { color: var(--moss); }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; } td, th { text-align: left; vertical-align: top; padding: 8px 6px; border-top: 1px solid var(--line); } th { color: var(--muted); font-weight: 600; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; } .toc a { text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: var(--card); min-height: 44px; display: inline-flex; align-items: center; }
+.tbl { overflow-x: auto; }
+</style>
+</head>
+<body><main>
+<p class="muted">Meine Meerschweinchen · Einrichtung</p>
+<h1>So richten Sie die App mit OneDrive ein</h1>
+<p>Einmalig ca. 30–45 Minuten. Danach öffnen Sie die App einfach über das Symbol auf dem iPad, und alles wird automatisch in Ihrem OneDrive gesichert und auf Ihren Geräten abgeglichen.</p>
+<div class="toc"><a href="#s1">1 · Online stellen</a><a href="#s2">2 · Microsoft-Verzeichnis</a><a href="#s3">3 · App registrieren</a><a href="#s4">4 · Client-ID eintragen</a><a href="#s5">5 · iPad</a><a href="#s6">6 · Weitere Geräte</a><a href="#s7">7 · Alte Daten</a><a href="#hilfe">Hilfe</a></div>
+
+<section id="s1"><h2><span class="n">1</span>App online stellen (GitHub Pages, kostenlos)</h2>
+<p>Die App braucht eine feste, sichere Internetadresse (https), damit das iPad sie installieren und Microsoft Sie nach der Anmeldung zurückschicken kann. GitHub Pages ist dafür kostenlos.</p>
+<ol>
+<li>Auf <a href="https://github.com/signup">github.com/signup</a> ein kostenloses Konto anlegen. Den Benutzernamen merken (z.B. <code>alexmayr</code>).</li>
+<li>Oben rechts auf <strong>+</strong> → <strong>New repository</strong>. Name: <code>meerschweinchen</code>, Sichtbarkeit <strong>Public</strong>, dann <strong>Create repository</strong>.</li>
+<li>Auf der neuen Seite den Link <strong>uploading an existing file</strong> anklicken. Den <em>Inhalt</em> des Ordners <code>app</code> aus dem ZIP hineinziehen (alle Dateien und den Ordner <code>icons</code>, nicht den Ordner <code>app</code> selbst). Unten <strong>Commit changes</strong>.</li>
+<li><strong>Settings</strong> → links <strong>Pages</strong> → unter «Branch» <code>main</code> und <code>/ (root)</code> wählen → <strong>Save</strong>.</li>
+<li>Nach 1–2 Minuten erscheint oben die Adresse, z.B. <code>https://alexmayr.github.io/meerschweinchen/</code>. Diese Adresse brauchen Sie gleich – <strong>genau so, mit Schrägstrich am Ende</strong>.</li>
+</ol>
+<div class="note"><strong>Sind meine Daten dann öffentlich?</strong> Nein. Öffentlich ist nur der Programmcode der App. Ihre Einträge und Fotos liegen ausschliesslich auf Ihren Geräten und in Ihrem OneDrive. Ohne Ihre Microsoft-Anmeldung kommt niemand an sie heran.</div>
+<p class="muted">Lieber ohne GitHub? Mit <a href="https://app.netlify.com/drop">Netlify Drop</a> ziehen Sie den Ordner <code>app</code> einfach ins Browserfenster und erhalten ebenfalls eine https-Adresse. Die Schritte 3–7 bleiben gleich.</p>
+</section>
+
+<section id="s2"><h2><span class="n">2</span>Microsoft-Verzeichnis anlegen</h2>
+<p>Microsoft erlaubt App-Registrierungen nur noch innerhalb eines «Verzeichnisses». Ein privates Outlook/Hotmail-Konto hat zunächst keines. Am einfachsten entsteht es mit einem kostenlosen Azure-Konto:</p>
+<ol>
+<li><a href="https://azure.microsoft.com/de-de/free/">azure.microsoft.com → Kostenloses Konto</a> öffnen und mit <strong>demselben Microsoft-Konto</strong> anmelden, dessen OneDrive Sie verwenden.</li>
+<li>Die Angaben ausfüllen. Microsoft verlangt zur Identitätsprüfung eine Telefonnummer und eine Kreditkarte. <strong>Belastet wird nichts</strong>, solange Sie nicht ausdrücklich auf ein kostenpflichtiges Abo umstellen. Die App-Registrierung selbst ist kostenlos.</li>
+<li>Danach existiert für Ihr Konto ein Verzeichnis (meist «Standardverzeichnis» / «Default Directory»).</li>
+</ol>
+<div class="note">Schon erledigt? Wenn Sie in Schritt 3 «App-Registrierungen» öffnen und eine neue Registrierung anlegen können, überspringen Sie diesen Schritt. Erscheint dagegen die Meldung, dass das Erstellen von Anwendungen ausserhalb eines Verzeichnisses nicht mehr möglich ist, brauchen Sie Schritt 2.</div>
+<p class="muted">Nach 30 Tagen endet das Azure-Startguthaben; das Verzeichnis und Ihre App-Registrierung bleiben bestehen. Microsoft gibt dafür allerdings keine ausdrückliche Garantie – falls die Anmeldung je nicht mehr funktioniert, sehen Sie unter «Hilfe» nach. Ihre Daten bleiben in jedem Fall auf Ihren Geräten und in OneDrive.</p>
+</section>
+
+<section id="s3"><h2><span class="n">3</span>App bei Microsoft registrieren</h2>
+<ol>
+<li><a href="https://entra.microsoft.com">entra.microsoft.com</a> öffnen und anmelden.</li>
+<li>Links <strong>Entra ID</strong> (früher «Identität») → <strong>App-Registrierungen</strong> → <strong>Neue Registrierung</strong>.</li>
+<li><strong>Name:</strong> <code>Meine Meerschweinchen</code><br><span class="muted">Wichtig: So heisst später auch der Ordner in OneDrive (<em>Apps › Meine Meerschweinchen</em>).</span></li>
+<li><strong>Unterstützte Kontotypen:</strong> <em>Nur persönliche Microsoft-Konten</em> (falls nicht angeboten: <em>Konten in einem beliebigen Organisationsverzeichnis und persönliche Microsoft-Konten</em>).</li>
+<li><strong>Umleitungs-URI:</strong> Plattform <strong>Single-Page-Anwendung (SPA)</strong> wählen – <em>nicht</em> «Web» – und Ihre Adresse aus Schritt 1 eintragen, z.B. <code>https://alexmayr.github.io/meerschweinchen/</code>.</li>
+<li><strong>Registrieren</strong> klicken.</li>
+<li>Auf der Übersichtsseite die <strong>Anwendungs-ID (Client-ID)</strong> kopieren (Format <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</code>).</li>
+<li>Links <strong>API-Berechtigungen</strong> → <strong>Berechtigung hinzufügen</strong> → <strong>Microsoft Graph</strong> → <strong>Delegierte Berechtigungen</strong> → <code>Files.ReadWrite.AppFolder</code> sowie <code>offline_access</code> ankreuzen → <strong>Berechtigungen hinzufügen</strong>. (<code>User.Read</code> darf bleiben.)</li>
+</ol>
+<div class="note"><strong>Nicht nötig und bitte nicht anlegen:</strong> ein «Geheimer Clientschlüssel» oder ein Zertifikat. Die App arbeitet bewusst ohne Geheimnis (Anmeldeverfahren mit PKCE), damit nichts Geheimes im Browser liegt.</div>
+<p class="muted">Warum <code>Files.ReadWrite.AppFolder</code>? Mit dieser Berechtigung sieht die App <strong>nur ihren eigenen Ordner</strong> in Ihrem OneDrive. Ihre übrigen Dateien bleiben für sie unsichtbar.</p>
+</section>
+
+<section id="s4"><h2><span class="n">4</span>Client-ID eintragen</h2>
+<p><strong>Empfohlen (gilt für alle Geräte):</strong> Auf GitHub im Repository die Datei <code>config.js</code> öffnen → Stift-Symbol (Bearbeiten) → zwischen die Anführungszeichen bei <code>clientId: ''</code> Ihre ID einfügen → <strong>Commit changes</strong>. Nach 1–2 Minuten ist die Änderung online.</p>
+<pre style="white-space:pre-wrap"><code>clientId: '1a2b3c4d-1111-2222-3333-444455556666',</code></pre>
+<p><strong>Alternative:</strong> In der App unter <em>Cloud und Synchronisierung</em> die Client-ID ins Feld eintragen. Das müssen Sie dann auf jedem Gerät einmal tun.</p>
+</section>
+
+<section id="s5"><h2><span class="n">5</span>Auf dem iPad installieren und verbinden</h2>
+<ol>
+<li>Auf dem iPad <strong>Safari</strong> öffnen und Ihre Adresse aus Schritt 1 aufrufen.</li>
+<li>Auf das <strong>Teilen-Symbol</strong> tippen (Quadrat mit Pfeil nach oben, oben rechts neben der Adresszeile).</li>
+<li><strong>«Zum Home-Bildschirm»</strong> wählen. Der Name «Meine Meerschweinchen» ist eingetragen → <strong>Hinzufügen</strong>.</li>
+<li>Safari schliessen und die App über das <strong>Meerschweinchen-Symbol</strong> auf dem Home-Bildschirm öffnen. Sie startet im Vollbild, ohne Adresszeile.</li>
+<li>In der App unten <strong>Mehr</strong> → <strong>Cloud und Synchronisierung</strong> → <strong>Mit Microsoft anmelden</strong>. Mit Ihrem Microsoft-Konto anmelden und den Zugriff auf den App-Ordner bestätigen.</li>
+<li>Zurück in der App legt sie die Ordner in OneDrive an. Dann ein <strong>Backup-Passwort</strong> festlegen (mind. 8 Zeichen, z.B. im iCloud-Schlüsselbund notieren). Ab jetzt laufen verschlüsselte Backups automatisch.</li>
+</ol>
+<div class="note"><strong>Wichtig:</strong> Die App auf dem Home-Bildschirm hat einen eigenen Speicher, getrennt von Safari. Melden Sie sich deshalb <em>in der installierten App</em> bei Microsoft an, nicht im Safari-Tab.</div>
+</section>
+
+<section id="s6"><h2><span class="n">6</span>Laptop, iPhone und weitere Geräte</h2>
+<ul>
+<li><strong>iPhone:</strong> genau wie beim iPad (Safari → Teilen → Zum Home-Bildschirm), dann anmelden.</li>
+<li><strong>Windows-Laptop / Desktop-PC:</strong> Adresse in Edge oder Chrome öffnen. Optional installieren: in der Adresszeile auf das Symbol «App installieren» klicken. Dann anmelden.</li>
+<li><strong>MacBook:</strong> in Safari <em>Ablage → Zum Dock hinzufügen</em>, oder in Chrome installieren. Dann anmelden.</li>
+<li><strong>Android-Tablet:</strong> in Chrome öffnen → Menü → «App installieren». Dann anmelden.</li>
+</ul>
+<p>Auf jedem weiteren Gerät erscheinen nach der Anmeldung alle Tiere, Einträge und Fotos automatisch. Beim ersten Backup fragt die App einmal nach Ihrem Backup-Passwort.</p>
+</section>
+
+<section id="s7"><h2><span class="n">7</span>Bisherige Daten aus «Cavia» übernehmen</h2>
+<p>Die neue App hat eine neue Adresse und beginnt darum leer. So ziehen Sie Ihre bisherigen Einträge um:</p>
+<ol>
+<li>In der <strong>alten</strong> App: <em>Einstellungen & Sicherung</em> → Passwort eingeben → <strong>Sicherung erstellen</strong> → in iCloud Drive oder «Dateien» speichern.</li>
+<li>In der <strong>neuen</strong> App: <em>Cloud und Synchronisierung</em> → ganz unten <strong>Sicherung als Datei</strong> → <em>Sicherungsdatei laden und zusammenführen</em> → Datei wählen, Passwort eingeben.</li>
+<li>Ist OneDrive verbunden, wird alles sofort hochgeladen und erscheint auf Ihren anderen Geräten.</li>
+</ol>
+</section>
+
+<section><h2>Im Alltag</h2>
+<ul>
+<li><strong>Speichern:</strong> Jeder Eintrag wird sofort auf dem Gerät gespeichert und wenige Sekunden später mit OneDrive abgeglichen. Kein manuelles Speichern oder Synchronisieren nötig.</li>
+<li><strong>Status:</strong> Oben rechts zeigt ein Punkt den Zustand: grün = synchronisiert, blau = läuft, orange = offline / Anmeldung nötig, rot = Fehler.</li>
+<li><strong>Offline:</strong> Ohne Internet arbeiten Sie normal weiter. Die Einträge warten auf dem Gerät und werden übertragen, sobald wieder Verbindung besteht.</li>
+<li><strong>Anmeldung:</strong> Microsoft lässt Anmeldungen in Web-Apps höchstens 24 Stunden ohne erneuten Besuch der Anmeldeseite gelten. Öffnen Sie die App nach längerer Pause, springt sie deshalb kurz zu Microsoft und zurück – meist ohne Eingabe. Ihr Passwort sieht die App nie.</li>
+<li><strong>Gleichzeitige Änderungen:</strong> Ändern Sie denselben Eintrag auf zwei Geräten, gilt die neuere Version. Die andere geht nicht verloren: <em>Cloud und Synchronisierung → Gleichzeitige Änderungen</em>.</li>
+<li><strong>Versehentlich gelöscht?</strong> Direkt nach dem Löschen auf «Rückgängig» tippen, oder später unter <em>Papierkorb</em> (60 Tage) wiederherstellen.</li>
+<li><strong>Backups:</strong> täglich automatisch (wenn sich etwas geändert hat), zusätzlich vor jeder Wiederherstellung und vor «Alle Daten löschen». Wiederherstellen unter <em>Backups wiederherstellen</em>.</li>
+<li><strong>PDF-Berichte:</strong> landen automatisch in <em>OneDrive › Apps › Meine Meerschweinchen › PDF-Berichte</em>.</li>
+<li><strong>In OneDrive selbst</strong> finden Sie pro Tier lesbare Tabellen (Gewicht, Gesundheit, Tierarzt, Kosten), die sich mit Excel öffnen lassen, sowie alle Fotos und Belege. Den Ordner <em>Synchronisierung</em> bitte nicht verändern.</li>
+<li><strong>Verbindung trennen:</strong> <em>Cloud und Synchronisierung → Verbindung trennen</em>. Den Zugriff ganz entziehen: <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a>.</li>
+</ul>
+</section>
+
+<section id="hilfe"><h2>Hilfe bei Problemen</h2>
+<div class="tbl"><table>
+<tr><th>Meldung / Problem</th><th>Lösung</th></tr>
+<tr><td>«Rücksprung-Adresse stimmt nicht» (AADSTS50011)</td><td>In der App-Registrierung unter <em>Authentifizierung</em> die Adresse exakt so eintragen, wie sie in der App angezeigt wird (inkl. Schrägstrich am Ende).</td></tr>
+<tr><td>«als Web statt als Single-page application eingetragen» (AADSTS9002326)</td><td>Unter <em>Authentifizierung</em> die Plattform «Web» löschen und dieselbe Adresse als <strong>Single-Page-Anwendung</strong> hinzufügen.</td></tr>
+<tr><td>«Client-ID ist unbekannt» (AADSTS700016)</td><td>Client-ID in <code>config.js</code> bzw. in der App prüfen (Anwendungs-ID, nicht Verzeichnis-ID).</td></tr>
+<tr><td>«Konto wird nicht unterstützt» (AADSTS50020)</td><td>Bei <em>Unterstützte Kontotypen</em> persönliche Microsoft-Konten erlauben, bzw. in der App beim Kontotyp «Privat oder Schule/Arbeit» wählen.</td></tr>
+<tr><td>Beim Registrieren: «Anwendungen ausserhalb eines Verzeichnisses … nicht mehr möglich»</td><td>Schritt 2 (Azure-Konto) ausführen.</td></tr>
+<tr><td>Anmeldung auf dem iPad kehrt nicht in die App zurück</td><td>Die App über das Home-Bildschirm-Symbol neu öffnen und erneut «Anmelden» tippen. Hilft das nicht: einmal in Safari anmelden, dann die App vom Home-Bildschirm entfernen und neu hinzufügen.</td></tr>
+<tr><td>«OneDrive-Speicher ist voll»</td><td>Platz in OneDrive schaffen. Bis dahin bleibt alles auf dem Gerät gespeichert.</td></tr>
+<tr><td>Backup-Passwort vergessen</td><td>Ältere Backups lassen sich ohne Passwort nicht öffnen. Ihre aktuellen Daten sind aber nicht betroffen (sie liegen auf den Geräten und im Synchronisierungsordner). Ein neues Passwort: in OneDrive die Datei <em>Datenbank-Backups/schluessel.json</em> löschen und in der App neu festlegen.</td></tr>
+</table></div>
+</section>
+
+<section><h2>Sicherheit auf einen Blick</h2>
+<ul>
+<li>Anmeldung direkt bei Microsoft (OAuth 2.0 mit PKCE), kein Passwort in der App, kein Client-Geheimnis im Code.</li>
+<li>Zugriff nur auf den eigenen App-Ordner in OneDrive (<code>Files.ReadWrite.AppFolder</code>).</li>
+<li>Zugangsschlüssel nur im Arbeitsspeicher; der Erneuerungsschlüssel liegt verschlüsselt auf dem Gerät.</li>
+<li>Alle Verbindungen über https. Backups zusätzlich mit AES-256 und Ihrem Backup-Passwort verschlüsselt.</li>
+<li>Jedes Gerät schreibt in seinen eigenen Synchronisierungsordner – Geräte können sich nicht gegenseitig überschreiben.</li>
+</ul>
+</section>
+</main></body></html>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9f3df"/>
+      <stop offset="1" stop-color="#b9d9a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Wiese -->
+  <ellipse cx="256" cy="452" rx="250" ry="70" fill="#8fbf74"/>
+  <path d="M70 430q6-40 0-70M98 432q10-30 4-58M420 430q-6-38 2-66M446 434q-8-30-2-52" stroke="#5f8f4e" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- Ohren -->
+  <path d="M150 168c-38-22-62 8-50 44 10 24 38 26 58 8z" fill="#c9853d"/>
+  <path d="M146 180c-22-10-36 6-28 26 6 12 22 14 34 4z" fill="#eaa797"/>
+  <path d="M362 168c38-22 62 8 50 44-10 24-38 26-58 8z" fill="#5b3a22"/>
+  <path d="M366 180c22-10 36 6 28 26-6 12-22 14-34 4z" fill="#eaa797"/>
+  <!-- Kopf / Körper -->
+  <path d="M256 128c-92 0-150 70-150 160 0 92 64 150 150 150s150-58 150-150c0-90-58-160-150-160z" fill="#c9853d"/>
+  <path d="M256 128c34 0 64 10 88 28 30 30 50 72 52 120-24 40-62 64-140 64z" fill="#5b3a22"/>
+  <path d="M256 150c-30 0-44 40-46 90-4 70-30 120 46 120s50-50 46-120c-2-50-16-90-46-90z" fill="#f7eedf"/>
+  <!-- Augen -->
+  <circle cx="190" cy="262" r="24" fill="#2a1a10"/>
+  <circle cx="198" cy="253" r="8" fill="#fff"/>
+  <circle cx="322" cy="262" r="24" fill="#2a1a10"/>
+  <circle cx="330" cy="253" r="8" fill="#fff"/>
+  <!-- Bäckchen -->
+  <ellipse cx="166" cy="314" rx="22" ry="13" fill="#eaa797" opacity=".75"/>
+  <ellipse cx="346" cy="314" rx="22" ry="13" fill="#eaa797" opacity=".75"/>
+  <!-- Nase & Mund -->
+  <path d="M238 304c0-10 36-10 36 0 0 10-10 18-18 18s-18-8-18-18z" fill="#e88f7f"/>
+  <path d="M256 322v14M256 336c-6 10-18 12-26 6M256 336c6 10 18 12 26 6" stroke="#5b3a22" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- Schnurrhaare -->
+  <path d="M220 326l-62-8M220 336l-60 10M292 326l62-8M292 336l60 10" stroke="#5b3a22" stroke-width="3" opacity=".5" stroke-linecap="round"/>
+  <!-- Pfötchen -->
+  <ellipse cx="214" cy="430" rx="26" ry="14" fill="#eaa797"/>
+  <ellipse cx="298" cy="430" rx="26" ry="14" fill="#eaa797"/>
+  <!-- Blümchen -->
+  <g transform="translate(424 120)"><g fill="#f2c14e"><ellipse cx="0" cy="-18" rx="9" ry="16"/><ellipse cx="0" cy="-18" rx="9" ry="16" transform="rotate(72)"/><ellipse cx="0" cy="-18" rx="9" ry="16" transform="rotate(144)"/><ellipse cx="0" cy="-18" rx="9" ry="16" transform="rotate(216)"/><ellipse cx="0" cy="-18" rx="9" ry="16" transform="rotate(288)"/></g><circle r="10" fill="#c98f17"/></g>
+</svg>
